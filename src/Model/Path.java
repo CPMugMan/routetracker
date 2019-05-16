@@ -6,7 +6,6 @@ public abstract class Path
     private Point start;
     private Point end;
 
-
     public Path(Point inStart, Point inEnd)
     {
         this.start = inStart;
@@ -35,7 +34,5 @@ public abstract class Path
         //TODO add stub method to calc distance here
         return 5.0;
     }
-
-
 
 }

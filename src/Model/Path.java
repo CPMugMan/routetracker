@@ -1,16 +1,29 @@
 package Model;
 
+import Controller.GeoUtils;
+
 //Common superclass between Segment and Route to enable composite pattern
 public abstract class Path
 {
-    private Point start;
-    private Point end;
+    protected Point start;
+    protected Point end;
 
     public Path(Point inStart, Point inEnd)
     {
         this.start = inStart;
         this.end = inEnd;
 
+    }
+
+    public Path()
+    {
+        this.start = null;
+        this.end = null;
+    }
+
+    public void setStart(Point inPoint)
+    {
+        this.start = inPoint;
     }
 
     public Point getStart()
@@ -29,10 +42,8 @@ public abstract class Path
 
     }
 
-    public double horizontalDistance()
-    {
-        //TODO add stub method to calc distance here
-        return 5.0;
-    }
+    public abstract double getHorizontalDistance(GeoUtils inGeo);
+
+
 
 }

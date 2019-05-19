@@ -8,12 +8,12 @@ public class Point
 
     public Point(double inLong , double inLat, double inAlltitude) throws InvalidPointException
     {
-        if(validLongitude(inLat) && validLatitude(inLat))
+        if(validLongitude(inLong) && validLatitude(inLat))
         {
             this.longitude = inLong;
             this.latitude = inLat;
             this.altitude = inAlltitude;
-        }
+            }
         else
         {
             throw new InvalidPointException("Coordinates are invalid");

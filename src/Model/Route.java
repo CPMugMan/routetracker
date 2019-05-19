@@ -1,5 +1,7 @@
 package Model;
 
+import Controller.GeoUtils;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -32,11 +34,41 @@ public class Route extends Path
         addVerticalDistance(inSegment);
     }
 
+    public Route()
+    {
+        start = null;
+        end = null;
+        climbing = 0.0;
+        descent = 0.0;
+        name = null;
+        description = null;
+        route = new LinkedList<Path>();
+    }
+
+    public void setName(String inName)
+    {
+        this.name = inName;
+    }
+
+    public void setDescription(String inDescription)
+    {
+        this.description = inDescription;
+    }
+
     public void addPath(Path inPath)
     {
         route.add(inPath);
+        if(route.size() == 1)
+        {
+            super.setStart(inPath.getStart());
+        }
         addVerticalDistance(inPath);
         super.setEnd(inPath.getEnd());
+    }
+
+    public String getName()
+    {
+        return this.name;
     }
 
     public double getClimbing()
@@ -50,15 +82,18 @@ public class Route extends Path
     }
 
     @Override
-    public double horizontalDistance()
+    public double getHorizontalDistance(GeoUtils inGeo)
     {
-        double distance = 0.0;
+        double horizontalDistance = 0.0;
         for(Path path : route)
         {
-            distance += path.horizontalDistance();
+            horizontalDistance += path.getHorizontalDistance(inGeo);
+
         }
-        return distance;
+        return horizontalDistance;
     }
+
+
 
     //Checks added path to see if should add vertical distance to climbing or descent
     public void addVerticalDistance(Path inPath)

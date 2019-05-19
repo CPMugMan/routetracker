@@ -1,5 +1,7 @@
 package Model;
 
+import Controller.GeoUtils;
+
 //Represents a segment between two points
 public class Segment extends Path
 {
@@ -47,6 +49,15 @@ public class Segment extends Path
     public double getVerticalDif()
     {
         return verticalDif;
+    }
+
+    @Override
+    public double getHorizontalDistance(GeoUtils inGeo)
+    {
+        Point end = super.getEnd();
+        Point start = super.getStart();
+
+        return inGeo.calcMetresDistance(end.getLatitude(),end.getLongitude(),start.getLatitude(),start.getLongitude());
     }
 
 }

@@ -2,10 +2,7 @@ package View;
 
 import Controller.GPSWrapper;
 import Controller.InvalidPathFactoryException;
-import Controller.RouteManager;
-import Model.Route;
 import Model.TrackingProgress;
-
 import java.io.IOException;
 
 public class TrackingMenuState implements MenuState
@@ -18,13 +15,17 @@ public class TrackingMenuState implements MenuState
     {
         this.trackingProgress = trackingProgress;
         this.wrapper = wrapper;
+        wrapper.attach(trackingProgress);
+
 
     }
 
     @Override
-    public void showMenu(Menu menu) throws IOException, InvalidPathFactoryException
+    public void showMenu(Menu menu) throws IOException, InvalidPathFactoryException,InterruptedException
     {
-        System.out.println("Hello");
+        System.out.println("# Tracking Menu welcome #");
+        wrapper.fakeTracking();
+
 
     }
 }

@@ -9,5 +9,5 @@ import java.io.IOException;
 //Menu state interface
 public interface MenuState
 {
-    void showMenu(Menu menu) throws IOException, InvalidPathFactoryException;
+    void showMenu(Menu menu) throws IOException, InvalidPathFactoryException,InterruptedException;
 }

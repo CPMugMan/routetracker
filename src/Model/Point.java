@@ -58,6 +58,14 @@ public class Point
         return true;
     }
 
+    public void printPoint()
+    {
+        String point = "Longitude: " + Double.toString(longitude) + " Latitude: " + Double.toString(latitude) +
+                " Altitude: " + Double.toString(altitude);
+
+        System.out.println(point);
+    }
+
 
 
 }

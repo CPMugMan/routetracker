@@ -6,7 +6,7 @@ import Controller.GeoUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TrackingProgress
+public class TrackingProgress extends GPSObserver
 {
     private Point currentLocation;
     private Route chosenRoute;
@@ -33,9 +33,17 @@ public class TrackingProgress
 
     }
 
+    public void setCurrentLocation(Point inPoint)
+    {
+        this.currentLocation = inPoint;
+    }
 
 
+    @Override
+    public void update(Point inLocation)
+    {
+        this.currentLocation = inLocation;
+        this.currentLocation.printPoint();
 
-
-
+    }
 }

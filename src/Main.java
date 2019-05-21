@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException, InvalidPathFactoryException
+    public static void main(String[] args) throws IOException, InvalidPathFactoryException,InterruptedException
     {
         GeoUtils geo = new GeoUtils();
         PathFactory factory = new PathFactory();

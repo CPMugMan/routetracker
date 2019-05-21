@@ -20,7 +20,7 @@ public class MainMenuState implements MenuState
     }
 
     @Override
-    public void showMenu(Menu menu) throws IOException,InvalidPathFactoryException
+    public void showMenu(Menu menu) throws IOException,InvalidPathFactoryException,InterruptedException
     {
         boolean done = false;
         while(!done)
@@ -56,7 +56,7 @@ public class MainMenuState implements MenuState
 
     }
 
-    public void routeSelector(Menu menu) throws IOException,InvalidPathFactoryException
+    public void routeSelector(Menu menu) throws IOException,InvalidPathFactoryException,InterruptedException
     {
         String search;
         boolean done = false;
@@ -69,7 +69,7 @@ public class MainMenuState implements MenuState
             if(manager.containsRoute(search))
             {
                 TrackingProgress trackingProgress = new TrackingProgress(manager.getRoute(search),manager.getGeoUtils());
-                GPSWrapper wrapper = new GPSWrapper(trackingProgress);
+                GPSWrapper wrapper = new GPSWrapper();
                 TrackingMenuState trackingMenuState = new TrackingMenuState(trackingProgress,wrapper);
                 menu.setState(trackingMenuState);
                 menu.showMenu();

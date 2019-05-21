@@ -20,7 +20,7 @@ public class Menu
         this.state = state;
     }
 
-    public void showMenu() throws IOException, InvalidPathFactoryException
+    public void showMenu() throws IOException, InvalidPathFactoryException,InterruptedException
     {
         state.showMenu(this);
 

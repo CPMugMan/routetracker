@@ -14,12 +14,12 @@ public class Segment extends Path
     private boolean polarity;
 
 
-    public Segment(String inDescription, Point inStart, Point inEnd) throws InvalidSegmenException
+    public Segment(String inDescription, Point inStart, Point inEnd) throws InvalidSegmentException
     {
         super(inStart,inEnd);
         if(inDescription.charAt(0) == '*')
         {
-            throw new InvalidSegmenException("Invalid Description");
+            throw new InvalidSegmentException("Invalid Description");
         }
 
         this.description = inDescription;

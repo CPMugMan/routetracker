@@ -10,9 +10,8 @@ public abstract class Path
 
     public Path(Point inStart, Point inEnd)
     {
-        this.start = inStart;
-        this.end = inEnd;
-
+            this.start = inStart;
+            this.end = inEnd;
     }
 
     public Path()

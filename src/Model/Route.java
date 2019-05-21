@@ -2,6 +2,7 @@ package Model;
 
 import Controller.GeoUtils;
 
+import java.text.DecimalFormat;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -73,12 +74,12 @@ public class Route extends Path
 
     public double getClimbing()
     {
-        return climbing;
+        return Math.floor(climbing*100)/100;
     }
 
     public double getDescent()
     {
-        return descent;
+        return Math.floor(descent*100)/100;
     }
 
     @Override

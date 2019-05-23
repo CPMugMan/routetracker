@@ -2,6 +2,8 @@ package Model;
 
 import Controller.GeoUtils;
 
+import java.util.List;
+
 //Common superclass between Segment and Route to enable composite pattern
 public abstract class Path
 {
@@ -42,6 +44,10 @@ public abstract class Path
     }
 
     public abstract double getHorizontalDistance(GeoUtils inGeo);
+
+    public abstract List<Segment> segmentList();
+
+
 
 
 

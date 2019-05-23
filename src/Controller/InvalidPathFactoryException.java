@@ -1,5 +1,6 @@
 package Controller;
 
+//Exception gets thrown when GeoUtils provides bad data
 public class InvalidPathFactoryException extends Exception
 {
     public InvalidPathFactoryException(String msg)

@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.IOException;
 
+//Provided GeoUtils Class used to get route-data and calculate horizontal distance
 public class GeoUtils
 {
 
@@ -30,10 +31,16 @@ public class GeoUtils
 
     }
 
-    //Measures horizontal distance between two sets of coordinates [Stubbed for now]
+    //Measures horizontal distance between two sets of coordinates
     public double calcMetresDistance(double lat1, double long1, double lat2, double long2)
     {
-        return 5.0;
+        double distance = 6371000 * Math.acos( ( (Math.sin((Math.PI * lat1) / 180)) * (Math.sin((Math.PI * lat2) / 180))
+        ) + ( (Math.cos((Math.PI * lat1) / 180)) * (Math.cos((Math.PI * lat2) / 180)) *
+                (Math.cos((Math.PI * Math.abs(long1 - long2)) / 180)) ) );
+
+        distance = Math.floor(distance*100)/100;
+
+        return distance;
 
     }
 }

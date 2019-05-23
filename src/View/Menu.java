@@ -1,11 +1,11 @@
 package View;
 
 import Controller.InvalidPathFactoryException;
-import Controller.RouteManager;
+
 
 import java.io.IOException;
 
-//Context state for menu states
+//Context state for menu state
 public class Menu
 {
     private MenuState state;

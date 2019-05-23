@@ -1,5 +1,6 @@
 package Model;
 
+//Represents any way-point within your the route
 public class Point
 {
     private Double longitude;

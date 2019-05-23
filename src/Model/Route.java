@@ -1,12 +1,11 @@
 package Model;
 
 import Controller.GeoUtils;
-
-import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-//Reprsents routes within the system which can be made up of many segments and/or subroutes
+//Reprsents routes within the system which can be made up of many segments and/or sub-routes
 public class Route extends Path
 {
     private String description;
@@ -82,6 +81,7 @@ public class Route extends Path
         return Math.floor(descent*100)/100;
     }
 
+    //Recursive function to sum up all horizontal values in route
     @Override
     public double getHorizontalDistance(GeoUtils inGeo)
     {
@@ -117,6 +117,19 @@ public class Route extends Path
         }
 
     }
+
+    //Returns all segments in this route
+    @Override
+    public List<Segment> segmentList()
+    {
+        List<Segment> returnList = new ArrayList<>();
+        for(Path path : route)
+        {
+            returnList.addAll(path.segmentList());
+        }
+        return returnList;
+    }
+
 
 
 

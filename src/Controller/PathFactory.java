@@ -1,10 +1,10 @@
 package Controller;
-
 import Model.*;
-
 import java.util.HashMap;
 import java.util.Map;
 
+
+//Path factory takes in file that GeoUtils provides and creates all appropriate Routes, SubRoutes and Segments
 public class PathFactory
 {
     public Map<String, Route> populateMap(String file) throws InvalidPathFactoryException
@@ -68,8 +68,6 @@ public class PathFactory
                             //Check if the subroute exists
                             if(returnnMap.containsKey(name))
                             {
-                                Path path = returnnMap.get(name);
-
                                 currentRoute.addPath(returnnMap.get(name));
 
                             }

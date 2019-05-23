@@ -3,12 +3,12 @@ package View;
 import Controller.GPSWrapper;
 import Controller.InvalidPathFactoryException;
 import Controller.RouteManager;
-import Model.TrackingProgress;
-
+import Controller.TrackingProgress;
 import java.io.IOException;
 import java.util.Scanner;
 
-
+//Main menu state responsible for allowing the user to update routes from GeoUtils and choose what route
+//They want to take
 public class MainMenuState implements MenuState
 {
     private static Scanner input = new Scanner(System.in);
@@ -56,6 +56,7 @@ public class MainMenuState implements MenuState
 
     }
 
+    //Displays menu for selecting route to take
     public void routeSelector(Menu menu) throws IOException,InvalidPathFactoryException,InterruptedException
     {
         String search;

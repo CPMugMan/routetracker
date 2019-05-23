@@ -2,8 +2,6 @@ import Controller.GeoUtils;
 import Controller.InvalidPathFactoryException;
 import Controller.PathFactory;
 import Controller.RouteManager;
-import Model.InvalidPointException;
-import Model.TrackingProgress;
 import View.MainMenuState;
 import View.Menu;
 

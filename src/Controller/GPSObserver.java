@@ -1,11 +1,10 @@
 package Controller;
 
 import Model.Point;
-import Model.TrackingProgress;
 
-public abstract class GPSObserver
+//Common interface for all observers in program
+public interface GPSObserver
 {
-    protected GPSWrapper wrapper;
-    public abstract void update(Point inLocation);
+    void update(Point inLocation);
 
 }

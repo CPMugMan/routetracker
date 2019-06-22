@@ -69,7 +69,7 @@ public class MainMenuState implements MenuState
             search = input.nextLine();
             if(manager.containsRoute(search))
             {
-                TrackingProgress trackingProgress = new TrackingProgress(manager.getRoute(search),manager.getGeoUtils());
+                TrackingProgress trackingProgress = new TrackingProgress(manager.getRoute(search),manager.getGeoUtils(),search);
                 GPSWrapper wrapper = new GPSWrapper();
                 TrackingMenuState trackingMenuState = new TrackingMenuState(trackingProgress,wrapper);
                 menu.setState(trackingMenuState);

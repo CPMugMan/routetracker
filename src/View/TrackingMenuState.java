@@ -32,17 +32,22 @@ public class TrackingMenuState implements MenuState
         System.out.println("# Tracking Menu - Starting Track  #");
         while(!trackingProgress.isFinished())
         {
-            System.out.println("Manually enter name of waypoint reached ");
-            wrapper.fakeTracking();
-            waypoint = input.nextLine();
-            if(trackingProgress.containsSegment(waypoint))
+            wrapper.fakeTracking(trackingProgress.getRouteName());
+            if(!trackingProgress.isFinished())
             {
-                trackingProgress.updateManually(waypoint);
+                System.out.println("GPS isnt working, enter name of segment reached");
+                waypoint = input.nextLine();
 
-            }
-            else
-            {
-                System.out.println("Invalid Waypoint that is not in the route");
+                if(trackingProgress.containsSegment(waypoint))
+                {
+
+                    trackingProgress.updateManually(waypoint);
+
+                }
+                else
+                {
+                    System.out.println("Invalid Waypoint that is not in the route");
+                }
             }
 
 

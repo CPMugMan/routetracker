@@ -50,36 +50,56 @@ public class GPSWrapper extends GPSLocator
     }
 
     //Fakes Central server sending GPS information if a hiker was going along the mainRoute
-    public void fakeTracking() throws InterruptedException
+    public void fakeTracking(String inRoute) throws InterruptedException
     {
-        TimeUnit.SECONDS.sleep(2);
-        locationReceived(-31.96, 115.80, 63.0);
-        TimeUnit.SECONDS.sleep(2);
-        locationReceived(-31.95, 115.78, 45.3);
-        TimeUnit.SECONDS.sleep(2);
-        locationReceived(-31.95, 115.77, 44.8);
-        TimeUnit.SECONDS.sleep(2);
-        locationReceived(-31.93, 115.76, 43.0);
-        TimeUnit.SECONDS.sleep(2);
-        locationReceived(-31.93, 115.75, 47.1);
-        TimeUnit.SECONDS.sleep(2);
-        locationReceived(-31.93, 115.72, 40.01);
-        TimeUnit.SECONDS.sleep(2);
+        if(inRoute.equals("mainRoute"))
+        {
+            TimeUnit.SECONDS.sleep(3);
+            locationReceived(-31.96, 115.80, 63.0);
+            TimeUnit.SECONDS.sleep(3);
+            locationReceived(-31.95, 115.78, 45.3);
+            TimeUnit.SECONDS.sleep(3);
+            locationReceived(-31.95, 115.77, 44.8);
+            TimeUnit.SECONDS.sleep(3);
+            locationReceived(-31.93, 115.76, 43.0);
+            TimeUnit.SECONDS.sleep(3);
+            locationReceived(-31.93, 115.75, 47.1);
+            TimeUnit.SECONDS.sleep(3);
+            locationReceived(-31.93, 115.72, 40.01);
+            theClimb();
+            TimeUnit.SECONDS.sleep(3);
+            locationReceived(-31.92, 115.74, 128.1);
+        }
+        else if(inRoute.equals("theClimb"))
+        {
+            TimeUnit.SECONDS.sleep(3);
+            locationReceived(-31.94, 115.75, 47.3);
+            theClimb();
+
+        }
+        else if(inRoute.equals("theStroll"))
+        {
+            locationReceived(-31.95, 115.77, 44.8);
+            TimeUnit.SECONDS.sleep(3);
+            locationReceived(-31.93, 115.76, 43.0);
+        }
+
+
+    }
+
+    //GPS Coordinates for theClimb -> pretends that someone is walking this route
+    private void theClimb() throws InterruptedException
+    {
+        TimeUnit.SECONDS.sleep(3);
         locationReceived(-31.94, 115.75, 55.3);
-        TimeUnit.SECONDS.sleep(2);
+        TimeUnit.SECONDS.sleep(3);
         locationReceived(-31.94, 115.75, 71.0);
-        TimeUnit.SECONDS.sleep(2);
+        TimeUnit.SECONDS.sleep(3);
         locationReceived(-31.94, 115.75, 85.0);
-        TimeUnit.SECONDS.sleep(2);
+        TimeUnit.SECONDS.sleep(3);
         locationReceived(-31.94, 115.75, 108.0);
-        TimeUnit.SECONDS.sleep(2);
+        TimeUnit.SECONDS.sleep(3);
         locationReceived(-31.94, 115.75, 131.9 );
-        TimeUnit.SECONDS.sleep(2);
-        locationReceived(-31.92, 115.74, 128.1);
-
-
-
-
     }
 
 

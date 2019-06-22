@@ -16,8 +16,9 @@ public class TrackingProgress implements GPSObserver
     private List<Segment> segmentList;
     private int currentSegment;
     private boolean finished;
+    private String routeName;
 
-    public TrackingProgress(Route inRoute, GeoUtils geoUtils)
+    public TrackingProgress(Route inRoute, GeoUtils geoUtils,String inRouteName)
     {
         try
         {
@@ -32,6 +33,7 @@ public class TrackingProgress implements GPSObserver
         segmentList = inRoute.segmentList();
         currentSegment = 0;
         finished = false;
+        routeName = inRouteName;
 
     }
 
@@ -63,6 +65,8 @@ public class TrackingProgress implements GPSObserver
                 currentLocation.getLatitude(),currentLocation.getLongitude());
         double vDiff = segmentPoint.getAltitude() - currentLocation.getAltitude();
 
+        //Should be && but || for testing purposes as horizontal diff function provides huge change even if diff between
+        //Lat and long is 0.1
         if(Math.abs(hDiff) < 10.0 || Math.abs(vDiff) < 2.0)
         {
                 System.out.println("User has reached next waypoint");
@@ -79,9 +83,11 @@ public class TrackingProgress implements GPSObserver
     //Displays information about how far the user is from remaining segments in the route
     public void showSegmentInformation(Point inLocation)
     {
+        segmentList.get(currentSegment).printDiff(inLocation,geoUtils,true);
+
         for(int i = currentSegment +1 ; i < segmentList.size() ; i++)
         {
-            segmentList.get(i).printDiff(inLocation,geoUtils);
+            segmentList.get(i).printDiff(inLocation,geoUtils,false);
         }
         System.out.print("\n");
 
@@ -121,6 +127,11 @@ public class TrackingProgress implements GPSObserver
     public GeoUtils getGeoUtils()
     {
         return geoUtils;
+    }
+
+    public String getRouteName()
+    {
+        return routeName;
     }
 
 

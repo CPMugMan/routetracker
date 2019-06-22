@@ -64,16 +64,31 @@ public class Segment extends Path
     }
 
 
-    //Shows the horizontal and vertical distance between any point and the start of this segment
-    public void printDiff(Point inPoint,GeoUtils inGeo)
+    //Shows the horizontal and vertical distance between any point and the start/end of this segment
+    public void printDiff(Point inPoint,GeoUtils inGeo, boolean end)
     {
-        Point start = super.getStart();
+        Point start;
+        if(end)
+        {
+            start = super.getEnd();
+        }
+        else
+        {
+            start = super.getStart();
+        }
         double horizontalDiff = inGeo.calcMetresDistance(start.getLatitude(),start.getLongitude(),inPoint.getLatitude(),inPoint.getLongitude());
         horizontalDiff = Math.floor(horizontalDiff*100)/100;
         double verticalDiff = start.getAltitude() - inPoint.getAltitude();
         verticalDiff = Math.floor(verticalDiff*100)/100;
 
-        System.out.println("Distance from segment : " + getDescription() + "\n" + "      Horizontal Distance: " + horizontalDiff + "\n" + "      Vertical Distance: " + verticalDiff );
+        if(end)
+        {
+            System.out.println("Distance to end of segment : " + getDescription() + "\n" + "      Horizontal Distance: " + horizontalDiff + "\n" + "      Vertical Distance: " + verticalDiff );
+        }
+        else
+        {
+            System.out.println("Distance from segment : " + getDescription() + "\n" + "      Horizontal Distance: " + horizontalDiff + "\n" + "      Vertical Distance: " + verticalDiff );
+        }
 
     }
 
